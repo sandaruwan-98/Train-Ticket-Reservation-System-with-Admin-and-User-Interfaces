@@ -1,0 +1,190 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Aug 10, 2022 at 02:11 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.5
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `test`
+--
+CREATE DATABASE IF NOT EXISTS `test` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `test`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reservation`
+--
+
+CREATE TABLE `reservation` (
+  `Pno` int(50) NOT NULL,
+  `StartPlace` varchar(100) NOT NULL,
+  `EndPlace` varchar(100) NOT NULL,
+  `TrainNumber` int(50) NOT NULL,
+  `TrainName` varchar(100) NOT NULL,
+  `Price` int(200) NOT NULL,
+  `date` varchar(20) NOT NULL,
+  `NoOfTickets` int(200) NOT NULL,
+  `Total` int(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `reservation`
+--
+
+INSERT INTO `reservation` (`Pno`, `StartPlace`, `EndPlace`, `TrainNumber`, `TrainName`, `Price`, `date`, `NoOfTickets`, `Total`) VALUES
+(1, 'Colombo', 'Badulla', 1, 'Udaratamenike', 1000, '2022-12-30', 3, 3000),
+(2, 'Colombo', 'Nuwara', 2, 'DumbaraMenike', 5000, '2022-13-30', 4, 20000),
+(3, 'Colombo', 'Nuwara', 2, 'DumbaraMenike', 5000, '2022-00-01', 3, 15000),
+(4, 'Colombo', 'Badulla', 1, 'Udaratamenike', 1000, '2022-27-05', 5, 5000),
+(7, 'Colombo', 'Nuwara', 2, 'DumbaraMenike', 5000, '2022-10-18', 4, 20000),
+(8, 'Colombo', 'Badulla', 1, 'Udaratamenike', 1000, '2022-00-20', 5, 5000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ttraindetails`
+--
+
+CREATE TABLE `ttraindetails` (
+  `tno` int(50) NOT NULL,
+  `tname` varchar(100) NOT NULL,
+  `startplace` varchar(100) NOT NULL,
+  `destinationplace` varchar(100) NOT NULL,
+  `price` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ttraindetails`
+--
+
+INSERT INTO `ttraindetails` (`tno`, `tname`, `startplace`, `destinationplace`, `price`) VALUES
+(1, 'Udaratamenike', 'Colombo', 'Badulla', 1000),
+(2, 'DumbaraMenike', 'Colombo', 'Nuwara', 5000),
+(3, 'polgahawela', 'polgahawela', 'jafna', 2500);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userdetails`
+--
+
+CREATE TABLE `userdetails` (
+  `userid` int(50) NOT NULL,
+  `Fullname` varchar(100) NOT NULL,
+  `Address` varchar(100) NOT NULL,
+  `phoneNo` varchar(15) NOT NULL,
+  `age` int(20) NOT NULL,
+  `Gender` varchar(8) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `userdetails`
+--
+
+INSERT INTO `userdetails` (`userid`, `Fullname`, `Address`, `phoneNo`, `age`, `Gender`, `username`, `password`) VALUES
+(1, 'Nipun Sandaruwan', 'No,234/A nittambuwa,Veyangoda', '0769855180', 24, 'Male', 'Nipun', '123'),
+(2, 'Administrator', 'Administrator Address ', '033200700', 0, 'Male', 'Admin', '1111'),
+(6, 'sandalu hasakelum', 'No 123/A kumballouwa ,veyangoda', '0332271376', 18, 'Male', 'Sandalu', '123456');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userlogin`
+--
+
+CREATE TABLE `userlogin` (
+  `userid` int(50) NOT NULL,
+  `fullname` varchar(100) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `contactno` varchar(20) NOT NULL,
+  `age` int(10) NOT NULL,
+  `gender` varchar(15) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `userlogin`
+--
+
+INSERT INTO `userlogin` (`userid`, `fullname`, `address`, `contactno`, `age`, `gender`, `username`, `password`) VALUES
+(1, 'nipun sandaruwan kumanayaka', 'no34/Akehallkanuwa,yakkala', '0769855180', 24, 'Male', 'nipun', 'nipun'),
+(3, 'testing1234', 'testing', 'testing', 30, 'Male', 'test', 'test'),
+(5, 'test3', 'test3', '12345678', 25, 'Female', 'test3', 'test3');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD PRIMARY KEY (`Pno`);
+
+--
+-- Indexes for table `ttraindetails`
+--
+ALTER TABLE `ttraindetails`
+  ADD PRIMARY KEY (`tno`);
+
+--
+-- Indexes for table `userdetails`
+--
+ALTER TABLE `userdetails`
+  ADD PRIMARY KEY (`userid`);
+
+--
+-- Indexes for table `userlogin`
+--
+ALTER TABLE `userlogin`
+  ADD PRIMARY KEY (`userid`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `reservation`
+--
+ALTER TABLE `reservation`
+  MODIFY `Pno` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `ttraindetails`
+--
+ALTER TABLE `ttraindetails`
+  MODIFY `tno` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `userdetails`
+--
+ALTER TABLE `userdetails`
+  MODIFY `userid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `userlogin`
+--
+ALTER TABLE `userlogin`
+  MODIFY `userid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
